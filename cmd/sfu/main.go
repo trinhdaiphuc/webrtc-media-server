@@ -28,9 +28,10 @@ func main() {
 	mux.Handle("/", web.Handler())
 	mux.HandleFunc("/websocket", controller.WSHandler)
 	server := &http.Server{
-		Addr:        *addr,
-		Handler:     mux,
-		IdleTimeout: 5 * time.Minute,
+		Addr:              *addr,
+		Handler:           mux,
+		IdleTimeout:       5 * time.Minute,
+		ReadHeaderTimeout: 5 * time.Second,
 	}
 
 	// start HTTP server

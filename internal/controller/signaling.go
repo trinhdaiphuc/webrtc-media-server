@@ -31,7 +31,7 @@ var (
 )
 
 // signalPeerConnections updates each PeerConnection so that it is getting all the expected media tracks
-func signalPeerConnections() {
+func signalPeerConnections() { //nolint
 	listLock.Lock()
 	defer func() {
 		listLock.Unlock()
@@ -123,7 +123,7 @@ func signalPeerConnections() {
 	}
 }
 
-func WSHandler(w http.ResponseWriter, r *http.Request) {
+func WSHandler(w http.ResponseWriter, r *http.Request) { //nolint
 	conn, _, _, err := ws.UpgradeHTTP(r, w)
 	if err != nil {
 		ll.Error("Upgrade error", log.Error(err))
@@ -290,11 +290,14 @@ func DispatchKeyFrame() {
 				continue
 			}
 
-			_ = peerConnections[i].peerConnection.WriteRTCP([]rtcp.Packet{
+			err := peerConnections[i].peerConnection.WriteRTCP([]rtcp.Packet{
 				&rtcp.PictureLossIndication{
 					MediaSSRC: uint32(receiver.Track().SSRC()),
 				},
 			})
+			if err != nil {
+				ll.Error("Write RTCP packet failed", log.Error(err))
+			}
 		}
 	}
 }

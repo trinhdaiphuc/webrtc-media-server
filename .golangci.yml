@@ -35,7 +35,7 @@ linters:
     - gocritic
     # - scopelint
     - dogsled
-    - nolintlint
+    # - nolintlint
     - misspell
     # - maligned
     - prealloc

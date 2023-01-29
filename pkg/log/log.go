@@ -221,7 +221,7 @@ func initPatterns(envLog string) ([]*regexp.Regexp, string) {
 }
 
 func parsePattern(p string) (*regexp.Regexp, error) {
-	p = strings.Replace(strings.Trim(p, " "), "*", ".*", -1)
+	p = strings.ReplaceAll(strings.Trim(p, " "), "*", ".*")
 	return regexp.Compile(p)
 }
 
