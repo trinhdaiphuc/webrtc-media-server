@@ -12,7 +12,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -tags musl --ldflags "-extldflags -static" -o server ./cmd/sfu
+RUN go build -tags musl --ldflags "-extldflags -static" -o sfu ./cmd/sfu
 
 FROM alpine:3.17.0
 
