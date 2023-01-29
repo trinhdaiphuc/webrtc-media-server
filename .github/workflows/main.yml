@@ -49,7 +49,7 @@ jobs:
           go test -v ./...
 
   build:
-    if: github.ref == 'refs/heads/master' || github.event.release.target_commitish == 'main'
+    if: github.ref == 'refs/heads/main' || github.event.release.target_commitish == 'main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
