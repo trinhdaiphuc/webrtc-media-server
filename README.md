@@ -10,4 +10,4 @@ SFU Webrtc Media Server written pure in Golang.
 go run cmd/sfu/main.go
 ```
 
-Open `http://localhost:8080/` in your browser. Then open this url on the other tab and see the result. 
+Open http://localhost:8080/ in your browser. Then open this url on the other tab and see the result. 
