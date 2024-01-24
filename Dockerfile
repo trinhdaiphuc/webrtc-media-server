@@ -14,7 +14,7 @@ COPY . .
 
 RUN go build -tags musl --ldflags "-extldflags -static" -o sfu ./cmd/sfu
 
-FROM alpine:3.17.0
+FROM alpine:3
 
 RUN apk update && apk add tzdata
 
