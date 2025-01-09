@@ -1,6 +1,6 @@
 module github.com/trinhdaiphuc/webrtc-media-server
 
-go 1.19
+go 1.22
 
 require (
 	github.com/gobwas/ws v1.1.0

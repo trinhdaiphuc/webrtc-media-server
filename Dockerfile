@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.19-alpine as build
+FROM golang:1.22-alpine3.20 AS build
 
 RUN apk add --no-cache git make gcc musl-dev
 
@@ -14,7 +14,7 @@ COPY . .
 
 RUN go build -tags musl --ldflags "-extldflags -static" -o sfu ./cmd/sfu
 
-FROM alpine:3.17.0
+FROM alpine:3.20
 
 RUN apk update && apk add tzdata
 

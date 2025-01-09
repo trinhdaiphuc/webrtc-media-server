@@ -23,5 +23,11 @@ test: ## Run go test for whole project
 lint: ## Run linter
 	@golangci-lint run ./...
 
+docker-build:
+	docker build . -t webrtc-media-server
+
+docker-run:
+	docker run -p 8080:8080 webrtc-media-server
+
 help: ## Display this help screen
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
